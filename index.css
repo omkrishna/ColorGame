@@ -34,7 +34,7 @@
 .row {
   display: flex; 
   flex-direction: row;
-  width: 100vh;
+  width: 150vh;
   justify-content: space-evenly;
   
 }
