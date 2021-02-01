@@ -29,12 +29,14 @@
   width: 200px;
   background-color: aliceblue;
   
+  
 }
 .row {
   display: flex; 
   flex-direction: row;
-  width: 50vh;
+  width: 100vh;
   justify-content: space-evenly;
+  
 }
 
 
