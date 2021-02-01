@@ -16,15 +16,25 @@
 #container {
   background-color: black;
   height: 70vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 200 px 200px 200px;
+  grid-template-rows: 1fr 1fr;
   justify-content: space-evenly;
   align-items: center;
+  
 }
 
 .tile {
   height: 200px;
   width: 200px;
   background-color: aliceblue;
+  
+}
+.row {
+  display: flex; 
+  flex-direction: row;
+  width: 50vh;
+  justify-content: space-evenly;
 }
 
 
