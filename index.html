@@ -10,58 +10,67 @@
       <h2>The Great</h2>
       <h1 id="header-clue">rgb(xxx,xxx,xxx)</h1>
       <h2>Guessing Game</h2>
+      <div>The number of tries: <div id="c">0</div></div>
     </div>
     <div id="container">
       <div class="tile" id="1"></div>
       <div class="tile" id="2"></div>
+      <div class="tile" id="3"></div>
+      <div class="tile" id="4"></div>
+      <div class="tile" id="5"></div>
+      <div class="tile" id="6"></div>
+      <button type="button" id="button">New Game </button>
     </div>
 
+
+
+
     <script>
-      var t1 = document.getElementById("1");
-      var t2 = document.getElementById("2");
+      var array=["1","2","3","4","5","6"]
+      var z=array.map(function(i){return document.getElementById(i);});
       var x;
+      var c=0;
       var correctColor;
 
       function getRandomColor() {
         var letters = "0123456789ABCDEF";
         var color = "#";
-        for (var i = 0; i < 6; i++) {
+        for (let i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
       }
 
       function newGame() {
-        t1.style.background = getRandomColor();
-        t2.style.background = getRandomColor();
+        for(let i=0;i<6;i++)
+        z[i].style.background = getRandomColor();
 
-        x = Math.floor(Math.random() * 2 + 1);
+        x = Math.floor(Math.random() * 6 + 1);
 
-        if (x == 1) correctColor = t1.style.background;
-        else correctColor = t2.style.background;
-        /* console.log(x);
-        console.log(correctColor); */
+                correctColor = z[x-1].style.background;
 
-        document.getElementById("header-clue").innerHTML = correctColor;
-      }
+               /* console.log(x);
+               console.log(correctColor); */
 
-      t1.addEventListener("click", function () {
-        if (t1.style.background == correctColor) {
-          t2.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
-        } else {
-          t1.style.background = "black";
-        }
-      });
+               document.getElementById("header-clue").innerHTML = correctColor;
+             }
+       for(let i=0;i<6;i++){
+             z[i].addEventListener("click", function () {
+               if (z[i].style.background == correctColor) {
+                 for(let i=0;i<6;i++)
+                 z[i].style.background = correctColor;
+                 document.getElementById("header").style.background = correctColor;
+               } else {c+=1;
+                 document.getElementById("c").innerHTML = c;
+                 z[i].style.background = "black";
+               }
+             });
 
-      t2.addEventListener("click", function () {
-        if (t2.style.background == correctColor) {
-          t1.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
-        } else {
-          t2.style.background = "black";
-        }
-      });
-    </script>
-  </body>
-</html>
+             }
+               button.addEventListener("click",function(){
+               c=0;
+              document.getElementById("c").innerHTML = 0;
+           newGame();});
+           </script>
+         </body>
+       </html>
