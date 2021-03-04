@@ -3,7 +3,21 @@
 <html>
   <head>
     <title>Color Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css" />
+
+    <style>
+      h2{
+        font-family: 'Open Sans', sans-serif;
+      }
+      h1{
+        font-family: 'Open Sans', sans-serif;
+        
+      }
+      
+    </style>
+
+    
   </head>
   <body onload="newGame()">
     <div id="header">
@@ -11,57 +25,208 @@
       <h1 id="header-clue">rgb(xxx,xxx,xxx)</h1>
       <h2>Guessing Game</h2>
     </div>
+    <div>No. of tries<div id="count"></div></div>
     <div id="container">
+      <div class="row">
       <div class="tile" id="1"></div>
       <div class="tile" id="2"></div>
+      <div class="tile" id="3"></div>
+    </div>
+    <div class="row">
+
+      <div class="tile" id="4"></div>
+      <div class="tile" id="5"></div>
+      <div class="tile" id="6"></div>
+    </div>
+      
+
+      <button onclick= "newGame()">New Game</button>
+
+
+
+
+      
+
+      
+    
+
     </div>
 
     <script>
-      var t1 = document.getElementById("1");
-      var t2 = document.getElementById("2");
+      var count = 0; //initialising value of count
+
+
+      var t= new Array();
+      for (var i=1; i<7;i++)
+      {
+        t[i]= document.getElementById(i);
+      }
+      
       var x;
       var correctColor;
 
-      function getRandomColor() {
+      function getRandomColor() 
+      {
+        count= 0;
         var letters = "0123456789ABCDEF";
         var color = "#";
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 6; i++) 
+        {
           color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
       }
 
-      function newGame() {
-        t1.style.background = getRandomColor();
-        t2.style.background = getRandomColor();
+      function newGame() 
+      {
+        container.style.background = "black";
+        header.style.background = "lightsalmon";
+        
+        x = Math.floor(Math.random() * 6 + 1);
+        
+        t[1].style.background = getRandomColor();
+        t[2].style.background = getRandomColor();
+        t[3].style.background = getRandomColor();
+        t[4].style.background = getRandomColor();
+        t[5].style.background = getRandomColor();
+        t[6].style.background = getRandomColor();
 
-        x = Math.floor(Math.random() * 2 + 1);
 
-        if (x == 1) correctColor = t1.style.background;
-        else correctColor = t2.style.background;
-        /* console.log(x);
-        console.log(correctColor); */
+        //new snippet to get x as one of the colors of given six tiles
+        for (var k=1; k<7;k++)
+        {
+          if (x== k)
+          correctColor = t[k].style.background;
+
+        }
+        
+
+        console.log(x);
+        console.log(correctColor);
 
         document.getElementById("header-clue").innerHTML = correctColor;
       }
 
-      t1.addEventListener("click", function () {
-        if (t1.style.background == correctColor) {
-          t2.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
-        } else {
-          t1.style.background = "black";
-        }
-      });
+      
 
-      t2.addEventListener("click", function () {
-        if (t2.style.background == correctColor) {
-          t1.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
-        } else {
-          t2.style.background = "black";
-        }
-      });
+      //new code to be written in place of replaced part
+      t[1].addEventListener("click", function()
+        {
+          if (t[1].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[1].style.background = "black";
+
+          }
+        });
+
+        t[2].addEventListener("click", function()
+        {
+          if (t[2].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[2].style.background = "black";
+
+          }
+        });
+
+        t[3].addEventListener("click", function()
+        {
+          if (t[3].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[3].style.background = "black";
+
+          }
+        });
+
+        t[4].addEventListener("click", function()
+        {
+          if (t[4].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[4].style.background = "black";
+
+          }
+        });
+
+        t[5].addEventListener("click", function()
+        {
+          if (t[5].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[5].style.background = "black";
+
+          }
+        });
+
+        t[6].addEventListener("click", function()
+        {
+          if (t[6].style.background== correctColor)
+          {
+            document.getElementById("container").style.background = correctColor;
+
+            document.getElementById("header").style.background = correctColor;
+
+          }
+          else
+          {
+            count= count+1;
+            document.getElementById("count").innerHTML = count;
+            t[6].style.background = "black";
+
+          }
+        });
+
+        
+        
+      
+        
+      
+      
+
+      
     </script>
   </body>
 </html>
